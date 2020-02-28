@@ -85,6 +85,8 @@ if [ "$sudo" = "n" ]; then
             --env="XAUTHORITY=${XAUTH}" \
             --device=/dev/dri/card0:/dev/dri/card0 \
             -v "${target}/src:/home/${ros_distro}-dev/catkin_ws/src" \
+            --net=host \
+            --privileged \
             --name "${container_name}" \
             -it ${image_tag}
 
@@ -97,8 +99,10 @@ else
             --env="XAUTHORITY=${XAUTH}" \
             --device=/dev/dri/card0:/dev/dri/card0 \
             -v "${target}/src:/home/${ros_distro}-dev/catkin_ws/src" \
+            --net=host \
+            --privileged \
             --name "${container_name}" \
-            -it ${image_tag}
+            -it ${image_tag} \
 
     sudo docker ps -aqf "name=${container_name}" > "${target}/docker_id"
 fi

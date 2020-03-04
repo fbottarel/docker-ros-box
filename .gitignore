@@ -21,6 +21,12 @@ msg/_*.py
 *.dox
 *.wikidoc
 
+# Ignore individual ros boxes
+*/go.sh
+*/docker_id
+*/src
+!target
+
 # eclipse stuff
 .project
 .cproject
